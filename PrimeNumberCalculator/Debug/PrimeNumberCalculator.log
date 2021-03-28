@@ -1,0 +1,4 @@
+﻿  PrimeNumberCalculator.cpp
+C:\Users\Adam\Desktop\Projects\C++\PrimeNumberCalculator\PrimeNumberCalculator\PrimeNumberCalculator.cpp(11,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Adam\Desktop\Projects\C++\PrimeNumberCalculator\PrimeNumberCalculator\PrimeNumberCalculator.cpp(23): warning C4715: 'checkNumber': not all control paths return a value
+  PrimeNumberCalculator.vcxproj -> C:\Users\Adam\Desktop\Projects\C++\PrimeNumberCalculator\Debug\PrimeNumberCalculator.exe
