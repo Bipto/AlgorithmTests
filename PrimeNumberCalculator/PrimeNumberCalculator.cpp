@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <chrono>
-int maxNumber;
 
-bool checkNumber() {
+float maxNumber;
+int count = 0;
+
+bool validateNumber() {
     try {
         std::string input;
         std::cin >> input;
@@ -22,15 +24,31 @@ bool checkNumber() {
     }
 }
 
-int calculatePrimeNumbers() {
-    int counter = 0;
-    for (float x = 1; x <= maxNumber; x++) {
-        if (floor(x / 2) == x / 2) {
-            counter++;
+bool isPrime(int n) {
+
+    if (n == 0 || n == 1)
+        return false;
+    else {
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                return false;
+            }
         }
     }
 
-    return counter;
+    return true;
+}
+
+void calculatePrimeNumbers() {
+    float i, n;
+
+    for (i = 0; i <= maxNumber; i++) {
+        if (isPrime(i)) {
+            std::cout << i << " is a prime number" << std::endl;
+            count++;
+        }
+    }
+
 }
 
 int main()
@@ -38,15 +56,25 @@ int main()
     std::cout << "Prime Number Calculator\n";
     std::cout << "Enter the maximum number:";
 
-    if (checkNumber()) {
-        int count = 0;
+    if (validateNumber()) {
         auto start = std::chrono::high_resolution_clock::now();
-        count = calculatePrimeNumbers();
+        calculatePrimeNumbers();
         auto stop = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double, std::milli> totalTime  = stop - start;
 
-        std::cout << "Found " << count << " numbers divisible by two" << std::endl;
+        if (count == 0) {
+            std::cout << "Found no prime numbers" << std::endl;
+        }
+
+        else if (count == 1) {
+            std::cout << "Found one prime number" << std::endl;
+        }
+
+        else {
+            std::cout << "Found " << count << " prime numbers" << std::endl;
+        }
+        
         std::cout << "Program took " << totalTime.count() << "  milliseconds (" << totalTime.count() / 1000 << " seconds)" << std::endl;
         return 0;
     }
